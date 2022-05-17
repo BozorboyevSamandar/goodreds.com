@@ -6,6 +6,7 @@ from .models import Book, Author, BookAuthor, BookReview
 
 class BookAdmin(admin.ModelAdmin):
     search_fields = ('title', 'isbn')
+    list_display = ('title', 'isbn', 'description')
 
 
 class AuthorAdmin(admin.ModelAdmin):
