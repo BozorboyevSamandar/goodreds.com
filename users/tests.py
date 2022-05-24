@@ -89,11 +89,13 @@ class RegistrationTaseCase(TestCase):
 
 
 class LoginTaseCase(TestCase):
-    def test_successful_login(self):
-        db_user = User.objects.create(username="testname", first_name="testname")
-        db_user.set_password("test123")
-        db_user.save()
+    # DRY - Don't repeat yourself
+    def setUp(self):
+        self.db_user = User.objects.create(username="testname", first_name="testname")
+        self.db_user.set_password("test123")
+        self.db_user.save()
 
+    def test_successful_login(self):
         self.client.post(
             reverse("users:login"),
             data={
@@ -106,10 +108,6 @@ class LoginTaseCase(TestCase):
         self.assertTrue(user.is_authenticated)
 
     def test_wrong_credentials(self):
-        db_user = User.objects.create(username="testname", first_name="testname")
-        db_user.set_password("test123")
-        db_user.save()
-
         self.client.post(
             reverse("users:login"),
             data={
@@ -133,3 +131,37 @@ class LoginTaseCase(TestCase):
         user = get_user(self.client)
 
         self.assertFalse(user.is_authenticated)
+
+    def test_logout(self):
+        self.client.login(username="testname", password="test123")
+        self.client.get(reverse("users:logout"))
+
+        user = get_user(self.client)
+        self.assertFalse(user.is_authenticated)
+
+
+class ProfileTestCase(TestCase):
+    def test_login_required(self):
+        response = self.client.get(reverse("users:profile"))
+
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.url, reverse("users:login") + "?next=/users/profile/")
+
+    def test_profile_details(self):
+        user = User.objects.create(
+            username="Jakhongir",
+            first_name="Jakhongir",
+            last_name="Rakhmonov",
+            email="test@gmail.com"
+        )
+        user.set_password("qwqw1212")
+        user.save()
+
+        self.client.login(username="Jakhongir", password="qwqw1212")
+
+        response = self.client.get(reverse("users:profile"))
+
+        self.assertContains(response, user.username)
+        self.assertContains(response, user.first_name)
+        self.assertContains(response, user.last_name)
+        self.assertContains(response, user.email)

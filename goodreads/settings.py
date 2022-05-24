@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -13,6 +14,8 @@ SECRET_KEY = 'django-insecure-5bfwx9pzb2&-ous6!4i)f2uo72gtn+7%=8_v@v_b#j=p7tpju7
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
+LOGIN_URL = "users:login"
 
 # Application definition
 
@@ -43,7 +46,7 @@ ROOT_URLCONF = 'goodreads.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

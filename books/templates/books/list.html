@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Books</h1>
+
+
+{% if messages %}
+
+{% for message in messages %}
+<span class="{{ message.tags }}">{{ message }}</span>
+{% endfor %}
+
+{% endif %}
+
+
+{% if books %}
+    <ul>
+        {% for book in books %}
+            <li>
+                <a href="{% url 'books:detail' book.id %}">{{book.title}}</a>
+            </li>
+            <br>
+        {% endfor %}
+    </ul>
+{% else %}
+        <h3>No books found</h3>
+{% endif %}
+
+</body>
+</html>
