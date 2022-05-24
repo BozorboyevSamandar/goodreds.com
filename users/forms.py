@@ -14,10 +14,11 @@ class UserCreateForm(forms.ModelForm):
 
         return user
 
+class UserUpdateForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('username', 'first_name', 'last_name', 'email')
 
-class UserLoginForm(forms.Form):
-    username = forms.CharField(max_length=150)
-    password = forms.CharField(max_length=120)
 
 
 

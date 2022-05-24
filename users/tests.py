@@ -165,3 +165,32 @@ class ProfileTestCase(TestCase):
         self.assertContains(response, user.first_name)
         self.assertContains(response, user.last_name)
         self.assertContains(response, user.email)
+
+    def test_update_profile(self):
+        user = User.objects.create(
+            username="Aziz",
+            first_name="Aziz",
+            last_name="John",
+            email="test@gmail.com"
+        )
+        user.set_password("qwqw1212")
+        user.save()
+
+        self.client.login(username="Aziz", password="qwqw1212")
+
+        response = self.client.post(
+            reverse("users:profile-edit"),
+            data={
+                "username": "Aziz",
+                "first_name": "Aziz",
+                "last_name": "Doe",
+                "email": "done@gmail.com"
+            }
+        )
+
+        user = User.objects.get(pk=user.pk)
+
+        self.assertEqual(user.last_name, "Doe")
+        self.assertEqual(user.email, "done@gmail.com")
+
+        self.assertEqual(response.url, reverse("users:profile"))

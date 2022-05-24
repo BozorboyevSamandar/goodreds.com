@@ -4,7 +4,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.views import View
-from users.forms import UserCreateForm
+from users.forms import UserCreateForm, UserUpdateForm
 
 
 # Create your views here.
@@ -65,4 +65,16 @@ class LogoutView(LoginRequiredMixin, View):
 
 class ProfileUpdateView(LoginRequiredMixin, View):
     def get(self, request):
-        return render(request, "users/profile_edit.html")
+        user_update_form = UserUpdateForm(instance=request.user)
+        return render(request, "users/profile_edit.html", {"form": user_update_form})
+
+    def post(self, request):
+        user_update_form = UserUpdateForm(instance=request.user, data=request.POST)
+
+        if user_update_form.is_valid():
+            user_update_form.save()
+            messages.success(request, "You have successfully updated you profile.")
+
+            return redirect("users:profile")
+
+        return render(request, "users/profile_edit.html", {"form": user_update_form})
