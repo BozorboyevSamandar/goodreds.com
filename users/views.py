@@ -61,3 +61,8 @@ class LogoutView(LoginRequiredMixin, View):
         logout(request)
         messages.info(request, "You have successfully logged out")
         return redirect("landing_page")
+
+
+class ProfileUpdateView(LoginRequiredMixin, View):
+    def get(self, request):
+        return render(request, "users/profile_edit.html")
