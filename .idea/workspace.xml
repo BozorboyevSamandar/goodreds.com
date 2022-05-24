@@ -6,7 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="6eff5bbc-0801-4b3c-9b08-e142318abfb8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/books/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/books/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/books/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/env/Lib/site-packages/django/contrib/auth/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/env/Lib/site-packages/django/contrib/auth/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/goodreads/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/goodreads/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/goodreads/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/goodreads/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users/templates/users/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/users/profile.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users/templates/users/profile_edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/users/profile_edit.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/tests.py" afterDir="false" />
