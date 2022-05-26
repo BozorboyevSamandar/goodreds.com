@@ -12,11 +12,13 @@ from books.models import Book
 #     template_name = "books/list.html"
 #     queryset = Book.objects.all()
 #     context_object_name = "books"
+#     paginate_by = 2
 
 
 class BookView(View):
     def get(self, request):
         books = Book.objects.all().order_by('id')
+        page_size = request.GET.get('page_size', 2)
         paginator = Paginator(books, 2)
 
         page_num = request.GET.get('page', 1)
