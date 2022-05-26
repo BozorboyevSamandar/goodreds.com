@@ -3,8 +3,16 @@
 
 
 {% block content %}
-<h1>{{book.title}}</h1>
-<img src="{{ book.cover_picture.url }}" class="cover_pic" alt="">
+<div class="row">
+    <div class="col-2">
+        <img src="{{ book.cover_picture.url }}" class="cover_pic" alt="">
+    </div>
+    <div class="col-6 ms-5">
+        <h3>{{book.title}}</h3>
+        <p>{{book.description}}</p>
 
-<p>{{book.description}}</p>
+    </div>
+</div>
+
+
 {% endblock %}

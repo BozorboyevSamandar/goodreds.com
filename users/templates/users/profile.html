@@ -2,14 +2,21 @@
 {% block title %}Profile Page{% endblock %}
 
 {% block content %}
-<h1>Profile Page</h1>
 
-<img src="{{ user.profile_picture.url }}" class="profile-pic" alt="profile_img">
-<br>
-<a href="{% url 'users:profile-edit' %}">edit profile</a>
-<p>Username: {{ user.username }}</p>
-<p>First name: {{ user.first_name }}</p>
-<p>Last name : {{ user.last_name }}</p>
-<p>Email: {{ user.email }}</p>
 
-{% endblock %}
+<div class=" image d-flex flex-column justify-content-center align-items-center">
+    <button class="btn btn-secondary">
+        <img src="{{ user.profile_picture.url }}" class="profile-pic"/>
+    </button>
+    <span class="name mt-3">{{ user.first_name }} {{ user.last_name }}</span>
+
+    <span class="idd">@{{ user.username }}</span>
+    <span class="idd">@{{ user.email }}</span>
+    <div class=" d-flex mt-2">
+        <a href="{% url 'users:profile-edit' %}" class="btn btn-dark">Edit profile</a>
+    </div>
+    <div class=" px-2 rounded mt-4 date "><span class="join">Joined {{ user.date_joined |date:"M d, Y" }}</span>
+    </div>
+
+
+    {% endblock %}
