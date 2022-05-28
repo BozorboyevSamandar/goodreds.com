@@ -6,14 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6eff5bbc-0801-4b3c-9b08-e142318abfb8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/templates/books/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/books/templates/books/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/books/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/books/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/books/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/goodreads/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/goodreads/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/goodreads/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/goodreads/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +15,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -78,7 +70,7 @@
       <workItem from="1653459405935" duration="25662000" />
       <workItem from="1653627911530" duration="625000" />
       <workItem from="1653668367536" duration="619000" />
-      <workItem from="1653711931398" duration="6375000" />
+      <workItem from="1653711931398" duration="7032000" />
     </task>
     <servers />
   </component>
@@ -107,5 +99,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/books/tests.py</url>
+          <line>38</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
