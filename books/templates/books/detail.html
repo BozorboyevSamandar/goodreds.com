@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% block title %}Book Detail Page{% endblock %}
 
 
@@ -13,21 +14,32 @@
 
     </div>
 </div>
-<h4>Reviews</h4>
-<hr>
 
-{% for review in book.bookreview_set.all %}
-<div class="row mb-3">
-    <div class="col-2">
-        <img class="small-profile-pic" src="{{ review.user.profile_picture.url }}" alt="">
-    </div>
-    <div class="col-7">
-        <b>{{ review.user.username }}</b> rated it {{ review.stars_given }} starts
-        <p class="mt-2 font-monospace">{{ review.comment }}</p>
+<div class="row">
+    <div class="col-6">
+        <form action="{% url 'books:reviews' book.id %}" method="post">
+            {% csrf_token %}
+            {{ review_form | crispy }}
+            <button type="submit" class="btn btn-success">Add Review</button>
+        </form>
     </div>
 </div>
 
-{% endfor %}
 
+{% if book.bookreview_set.exists %}
+    <h4>Reviews</h4><hr>
+    {% for review in book.bookreview_set.all %}
+    <div class="row mb-3">
+        <div class="col-2">
+                 <img class="small-profile-pic" src="{{ review.user.profile_picture.url }}" alt="">
+        </div>
+         <div class="col-7">
+            <b>{{ review.user.username }}</b> rated it {{ review.stars_given }} starts <span class="fw-lighter">{{ review.created_at | date:"M d, Y" }}</span>
+            <p class="mt-2 font-monospace">{{ review.comment }}</p>
+        </div>
+    </div>
+
+    {% endfor %}
+{% endif %}
 
 {% endblock %}
