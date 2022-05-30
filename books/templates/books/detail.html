@@ -10,6 +10,17 @@
     </div>
     <div class="col-6 ms-5">
         <h3>{{book.title}}</h3>
+
+        <span class="fst-italic">
+            Authored by
+            {% for book_author in book.bookauthor_set.all %}
+                {% if forloop.last %}
+                    <b>{{ book_author.author.full_name }}</b>
+                {% else %}
+                    <b>{{ book_author.author.full_name }}</b>,
+                {% endif %}
+            {% endfor %}
+        </span>
         <p>{{book.description}}</p>
 
     </div>
@@ -27,19 +38,20 @@
 
 
 {% if book.bookreview_set.exists %}
-    <h4>Reviews</h4><hr>
-    {% for review in book.bookreview_set.all %}
-    <div class="row mb-3">
-        <div class="col-2">
-                 <img class="small-profile-pic" src="{{ review.user.profile_picture.url }}" alt="">
-        </div>
-         <div class="col-7">
-            <b>{{ review.user.username }}</b> rated it {{ review.stars_given }} starts <span class="fw-lighter">{{ review.created_at | date:"M d, Y" }}</span>
-            <p class="mt-2 font-monospace">{{ review.comment }}</p>
-        </div>
+<h4>Reviews</h4>
+<hr>
+{% for review in book.bookreview_set.all %}
+<div class="row mb-3">
+    <div class="col-2">
+        <img class="small-profile-pic" src="{{ review.user.profile_picture.url }}" alt="">
     </div>
+    <div class="col-7">
+        <b>{{ review.user.username }}</b> rated it {{ review.stars_given }} starts <span class="fw-lighter">{{ review.created_at | date:"M d, Y" }}</span>
+        <p class="mt-2 font-monospace">{{ review.comment }}</p>
+    </div>
+</div>
 
-    {% endfor %}
+{% endfor %}
 {% endif %}
 
 {% endblock %}

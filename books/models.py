@@ -26,6 +26,9 @@ class Author(models.Model):
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
 
+    def full_name(self):
+        return f"{self.first_name} {self.last_name}"
+
 
 class BookAuthor(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
@@ -33,6 +36,8 @@ class BookAuthor(models.Model):
 
     def __str__(self):
         return f"{self.book.title} by {self.author.first_name} {self.author.last_name}"
+
+
 
 
 class BookReview(models.Model):
