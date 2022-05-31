@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
@@ -74,3 +75,20 @@ class EditReviewView(LoginRequiredMixin, View):
 
         return render(request, "books/edit_review.html", {'book': book, 'review': review, 'review_form': review_form})
 
+
+class ConfirmDeleteReviewView(LoginRequiredMixin, View):
+    def get(self, request, book_id, review_id):
+        book = Book.objects.get(id=book_id)
+        review = book.bookreview_set.get(id=review_id)
+        return render(request, "books/delete_review.html", {'book': book, 'review': review})
+
+
+class DeleteReviewView(LoginRequiredMixin, View):
+    def get(self, request, book_id, review_id):
+        book = Book.objects.get(id=book_id)
+        review = book.bookreview_set.get(id=review_id)
+
+        review.delete()
+        messages.success(request, "You have successfully deleted this review")
+
+        return redirect(reverse("books:detail", kwargs={"id": book.id}))
